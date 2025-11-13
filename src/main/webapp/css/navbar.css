@@ -1,0 +1,244 @@
+/* === Scrollbar customizada para a lista de notificações === */
+#notificacao-lista::-webkit-scrollbar {
+  width: 8px;
+}
+#notificacao-lista::-webkit-scrollbar-track {
+  background: #f1f1f1;
+  border-radius: 4px;
+}
+#notificacao-lista::-webkit-scrollbar-thumb {
+  background: #1a4d2e;
+  border-radius: 4px;
+}
+#notificacao-lista::-webkit-scrollbar-thumb:hover {
+  background: #2d6a4f;
+}
+
+/* === CORREÇÃO PRINCIPAL: Navbar Container === */
+.navbar-container {
+  display: flex !important;
+  justify-content: space-between !important;
+  align-items: center !important;
+  overflow: visible !important; /* ✅ CRÍTICO: evita corte */
+  position: relative !important;
+  padding-right: 0 !important; /* remove padding que pode causar problemas */
+}
+
+/* === Barra direita (ícones e perfil) === */
+.barra-direita {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: flex-end !important;
+  gap: 8px;
+  flex-shrink: 0 !important;
+  padding-right: 20px !important; /* ✅ espaço contra o corte lateral */
+  box-sizing: border-box !important;
+  overflow: visible !important; /* ✅ evita recorte */
+  position: relative !important;
+  min-width: auto !important;
+  margin-left: auto !important; /* garante alinhamento à direita */
+}
+
+/* Ícones (notificação e engrenagem) */
+.barra-direita > a {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  height: 40px;
+  flex-shrink: 0 !important;
+  padding: 0 4px !important;
+  margin: 0 !important;
+}
+
+/* Ícones 🔔 e ⚙️ */
+.barra-direita a span {
+  font-size: 1.4em;
+  line-height: 1;
+}
+
+/* === FOTO DE PERFIL (AVATAR) - CORREÇÃO PRINCIPAL === */
+.barra-direita #configuracao-btn {
+  padding: 0 !important;
+  margin: 0 0 0 4px !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  flex-shrink: 0 !important;
+  position: relative !important;
+  z-index: 10 !important; /* garante que fique acima de outros elementos */
+}
+
+.barra-direita #configuracao-btn div {
+  width: 40px !important;
+  height: 40px !important;
+  min-width: 40px !important;
+  min-height: 40px !important;
+  border-radius: 50% !important;
+  overflow: hidden !important;
+  border: 2px solid #1a4d2e !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  background: #f0f0f0 !important;
+  flex-shrink: 0 !important;
+  box-sizing: border-box !important;
+  position: relative !important;
+  margin: 0 !important;
+}
+
+.barra-direita #configuracao-btn img {
+  width: 100% !important;
+  height: 100% !important;
+  object-fit: cover !important;
+  display: block !important;
+}
+
+/* === LOGO E TEXTO === */
+.barra-esquerda {
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
+}
+
+.barra-esquerda a.logo-link {
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  color: white;
+}
+
+/* Imagem da logo */
+.barra-esquerda .marca {
+  height: 40px;
+  width: auto;
+  object-fit: contain;
+  margin-right: 10px;
+}
+
+/* Texto "SeuBolso" */
+.barra-esquerda .logo {
+  font-size: 1.5em;
+  font-weight: bold;
+  color: white;
+  white-space: nowrap; /* evita quebra de linha */
+}
+
+/* Nenhum hover para logo/texto */
+.barra-esquerda a.logo-link:hover,
+.barra-esquerda a.logo-link:focus,
+.barra-esquerda .logo:hover {
+  color: white;
+  text-decoration: none;
+  box-shadow: none;
+}
+
+/* Badge de notificação */
+#notificacao-badge {
+  top: 2px;
+  right: 2px;
+  animation: pulse 2s ease-in-out infinite;
+}
+
+/* Hover no botão fechar */
+#fechar-popover-notificacao:hover {
+  background: linear-gradient(135deg, #2d6a4f 0%, #1a4d2e 100%);
+  transform: translateY(-1px);
+  box-shadow: 0 2px 8px rgba(26, 77, 46, 0.3);
+}
+
+/* Animação do badge */
+@keyframes pulse {
+  0%, 100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.1);
+  }
+}
+
+/* === RESPONSIVIDADE === */
+@media (max-width: 768px) {
+  .navbar-container {
+    padding: 15px 10px 15px 20px !important;
+  }
+  
+  .barra-direita {
+    gap: 6px;
+    padding-right: 15px !important;
+  }
+}
+
+@media (max-width: 480px) {
+  .navbar-container {
+    padding: 12px 8px 12px 15px !important;
+  }
+
+  .barra-direita {
+    gap: 4px;
+    padding-right: 12px !important;
+  }
+
+  .barra-direita #configuracao-btn div {
+    width: 36px !important;
+    height: 36px !important;
+    min-width: 36px !important;
+    min-height: 36px !important;
+  }
+
+  .barra-direita a span {
+    font-size: 1.3em;
+  }
+  
+  /* Logo menor em mobile */
+  .barra-esquerda .marca {
+    height: 35px;
+  }
+  
+  .barra-esquerda .logo {
+    font-size: 1.3em;
+  }
+}
+
+@media (max-width: 380px) {
+  .navbar-container {
+    padding: 10px 5px 10px 12px !important;
+  }
+
+  .barra-direita {
+    gap: 2px;
+    padding-right: 10px !important;
+  }
+
+  .barra-direita #configuracao-btn div {
+    width: 34px !important;
+    height: 34px !important;
+    min-width: 34px !important;
+    min-height: 34px !important;
+  }
+
+  .barra-direita a span {
+    font-size: 1.2em;
+  }
+}
+
+/* === MENU LATERAL === */
+.hamburguer {
+  display: none;
+  font-size: 2em;
+  background: none;
+  border: none;
+  color: white;
+  cursor: pointer;
+  flex-shrink: 0;
+  padding: 0 8px;
+}
+
+@media (max-width: 768px) {
+  .hamburguer {
+    display: block;
+  }
+  
+  .barra-meio {
+    display: none;
+  }
+}
