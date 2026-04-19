@@ -87,3 +87,13 @@ CREATE TABLE lancamentos (
     usuario_id BIGINT NOT NULL,
     FOREIGN KEY (usuario_id) REFERENCES usuarios(id) ON DELETE CASCADE
 );
+```
+## 👥 Participantes do Grupo
+
+- **Rafael**  
+  https://github.com/rafael2297
+
+- **Hayanne**  
+  https://github.com/AdryelleLima
+
+- **Julia**  
