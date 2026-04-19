@@ -96,5 +96,5 @@ CREATE TABLE lancamentos (
 - **Hayanne**  
   https://github.com/AdryelleLima
 
-- **Julia**  
+- **Júlia**  
   https://github.com/JuliaLimaB007
